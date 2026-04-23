@@ -32,8 +32,8 @@ server <- function(input, output) {
     pl <- data.pheno.FT %>% 
       filter(location == as.name(input$location) %>% 
       ggplot(aes(x= `Seed Length`, 
-                 y= FT)) + 
-        geom_line()
+                 y= FT)) + geom_point() + 
+        geom_smooth()
       )
   )
 
