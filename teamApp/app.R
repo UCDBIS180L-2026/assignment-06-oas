@@ -6,7 +6,9 @@ library(shiny)
 
 # Define UI for application 
 ui <- fluidPage( #create the overall page
-    #UI code here
+    
+  # App title
+  
   )
 
 
