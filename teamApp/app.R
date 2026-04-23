@@ -3,7 +3,7 @@ library(tidyverse)
 # other libraries here
 
 # data loading and one-time processing here
-data.pheno <- read_csv("~/Assignments/assignment-04-shbaweja-ux/input/RiceSNPData/RiceDiversity.44K.MSU6.Phenotypes.csv")
+data.pheno <- read_csv("teamApp/RiceDiversity.44K.MSU6.Phenotypes.csv")
 
 
 # Define UI for application 
