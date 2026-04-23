@@ -24,7 +24,7 @@ server <- function(input, output) {
     
   )
   # server code here
+)
 }
-
 # Run the application 
 shinyApp(ui = ui, server = server)
