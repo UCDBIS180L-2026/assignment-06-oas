@@ -14,7 +14,7 @@ ui <- fluidPage( #create the overall page
 # Define server logic 
 server <- function(input, output) {
   
-  # pivoting FT data for histogram
+  # pivoting FT data for plot
   data.pheno.FT <- data.pheno %>% 
     select('Region', 
            'Flowering time at Arkansas',
