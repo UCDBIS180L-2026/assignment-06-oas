@@ -54,12 +54,12 @@ server <- function(input, output) {
   
   output$violinPlot <- renderPlot({
     
-    plotTrait <- as.name(input$trait) # convert string to name
+    plotTrait <- as.name(input$species) # convert string to name
     
     # set up the plot
     pl <- ggplot(data = iris,
-                 aes(x=Species,
-                     y= !! plotTrait, # !! to use the column names contained in plotTrait
+                 aes(x=c(Sepal.length, Sepal.Width, Petal.Length, Petal.Width),
+                     y= !! plotSpecies, # !! to use the column names contained in plotSpecies
                      fill=Species
                  )
     )
