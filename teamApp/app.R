@@ -71,7 +71,11 @@ server <- function(input, output) {
       
       #draw plot
       pl + geom_point() + 
-        geom_smooth()
+        geom_smooth() +
+        labs(x = 'Seed Length', y = 'Flowering Time') +
+        theme(base_size = 16,
+              axis.title.x = element_text(face = 'bold'),
+              axis.title.y = element_text(face = 'bold'))
     
   })
   
