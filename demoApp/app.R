@@ -26,7 +26,7 @@ ui <- fluidPage( #create the overall page
     # Sidebar with a radio box to input which trait will be plotted
     sidebarLayout(
       sidebarPanel(
-        radioButtons("species", #the input variable that the value will go into
+        radioButtons("Species", #the input variable that the value will go into
                      "Choose a species to display traits:",
                      c("setosa",
                        "versicolor",
@@ -51,24 +51,25 @@ server <- function(input, output) {
   #     when inputs change
   #  2) Its output type is a plot
   
+  # Reformat iris data into long format
+  iris_longer <- iris %>% 
+    filter(Species = input$Species) %>% 
+    pivot_longer(
+      cols = -Species,
+      names_to = "trait",
+      values_to = "value"
+    )
+  
   output$violinPlot <- renderPlot({
     
-    plotSpecies <- as.name(input$species) # convert string to name
-    
-    # Reformat iris data into long format
-    iris_longer <- iris %>% 
-      filter(Species = input$Species) %>% 
-      pivot_longer(
-        cols = -Species,
-        names_to = "trait",
-        values_to = "value"
-      )
+    plotSpecies <- as.name(input$Species) # convert string to name
     
     # set up the plot
-    pl <- ggplot(data = iris_longer,
-                 aes(x=!! plotSpecies, # !! to use the column names contained in plotSpecies
-                     y= trait,
-                     fill=trait
+    pl <- iris_longer %>% 
+      filter(Species %in% plotSpecies) %>% 
+      ggplot(aes(x=trait, #
+                 y= value,
+                 fill=trait
 
                  )
     )
