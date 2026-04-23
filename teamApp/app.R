@@ -3,13 +3,28 @@ library(tidyverse)
 # other libraries here
 
 # data loading and one-time processing here
-data.pheno <- read_csv("~/assignment-04-shbaweja-ux/input/RiceSNPData/RiceDiversity.44K.MSU6.Phenotypes.csv")
+data.pheno <- read_csv("~/Assignments/assignment-04-ammoser/input/RiceDiversity.44K.MSU6.Phenotypes.csv")
 
 # Define UI for application 
 ui <- fluidPage( #create the overall page
     
-  # App title
+  # Application title
+  titlePanel("[Placeholder]"),
   
+  # Application Summary
+  helpText(""),
+  
+  # User sidebar
+  sidebarLayout(
+    sidebarPanel(
+      
+    )
+  ),
+  
+  # Present Plot
+  mainPanel(
+    
+  )
   )
 
 
