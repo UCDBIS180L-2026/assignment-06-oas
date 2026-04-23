@@ -8,9 +8,12 @@ data.pheno <- read_csv("RiceDiversity.44K.MSU6.Phenotypes.csv")
 # Define UI for application 
 ui <- fluidPage(
   
-  titlePanel("[Placeholder]"),
+  titlePanel("Rice Seed Length vs. Flowering Time"),
   
-  helpText("[Placeholder]"),
+  helpText("This application creates a line plot with a trendline to show the",
+           "change in flowering time based on location and seed length.",
+           "Feel free to use the radio box below to select a location and",
+           "the slider to set the range of seed lengths to view."),
   
   sidebarLayout(
     sidebarPanel(
