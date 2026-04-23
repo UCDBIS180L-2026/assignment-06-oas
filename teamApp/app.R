@@ -46,7 +46,7 @@ ui <- fluidPage(
 # Define server logic 
 server <- function(input, output) {
   
-  # pivoting FT data for histogram
+  # pivoting FT data for plot
   data.pheno.FT <- data.pheno %>% 
     select('Region', 
            'Flowering time at Arkansas',
@@ -58,9 +58,9 @@ server <- function(input, output) {
                  names_prefix = 'Flowering time at ',
                  values_to = 'FT')
   
-  output$histogram <- renderPlot(
+  output$plot <- renderPlot(
     
-    #setup line plot
+    #setup plot
     pl <- data.pheno.FT %>% 
       filter(location == as.name(input$location) %>% 
       ggplot(aes(x= `Seed length`, 
