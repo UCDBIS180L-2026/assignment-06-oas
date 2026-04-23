@@ -18,9 +18,9 @@ ui <- fluidPage(
         "location",
         "Choose which location from which flowering time was recorded:",
         choices = c(
-          "Flowering time at Arkansas",
-          "Flowering time at Faridpur",
-          "Flowering time at Aberdeen"
+          "Arkansas",
+          "Faridpur",
+          "Aberdeen"
         )
       ),
       
@@ -61,10 +61,13 @@ server <- function(input, output) {
   output$plot <- renderPlot({
     
     #setup plot
-    pl <- data.pheno.FT %>% 
-      filter(location == as.name(input$location)) %>% 
-      ggplot(aes(x= input$seedlength, 
-                 y= FT))
+    pl <- data.pheno.FT %>%
+      filter(
+        location == input$location,
+        `Seed length` >= input$seedlength[1],
+        `Seed length` <= input$seedlength[2]
+      ) %>% 
+      ggplot(aes(x = `Seed length`, y = FT))
       
       #draw plot
       pl + geom_point() + 
