@@ -14,6 +14,15 @@ ui <- fluidPage( #create the overall page
 
 # Define server logic 
 server <- function(input, output) {
+  output$histogram <- renderPlot(
+    
+    #setup line plot
+    pl <- data.pheno.FT %>% 
+      filter(location == as.name(input$location) %>% 
+      ggplot(aes(x= `Seed Length`, 
+                 y= FT)) + geom_line()
+    
+  )
   # server code here
 }
 
