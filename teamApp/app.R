@@ -13,7 +13,17 @@ ui <- fluidPage( #create the overall page
 
 # Define server logic 
 server <- function(input, output) {
+  output$histogram <- renderPlot(
+    
+    #setup line plot
+    pl <- data.pheno.FT %>% 
+      filter(location == as.name(input$location) %>% 
+      ggplot(aes(x= `Seed Length`, 
+                 y= FT)) + geom_line()
+    
+  )
   # server code here
+<<<<<<< HEAD
   
   # pivoting FT data for histogram
   data.pheno.FT <- data.pheno %>% 
@@ -28,7 +38,9 @@ server <- function(input, output) {
                  values_to = 'FT')
   
   
+=======
+)
+>>>>>>> f1152c2a1f744710da827a32abd1f2b831e0b2be
 }
-
 # Run the application 
 shinyApp(ui = ui, server = server)
