@@ -26,7 +26,7 @@ server <- function(input, output) {
                  names_prefix = 'Flowering time at ',
                  values_to = 'FT')
   
-  output$histogram <- renderPlot(
+  output$plot <- renderPlot(
     
     #setup line plot
     pl <- data.pheno.FT %>% 
