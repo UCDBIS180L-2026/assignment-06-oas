@@ -28,7 +28,7 @@ server <- function(input, output) {
   
   output$plot <- renderPlot(
     
-    #setup line plot
+    #setup plot
     pl <- data.pheno.FT %>% 
       filter(location == as.name(input$location) %>% 
       ggplot(aes(x= `Seed length`, 
