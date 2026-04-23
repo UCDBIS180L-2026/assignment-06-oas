@@ -36,7 +36,7 @@ ui <- fluidPage( #create the overall page
       
       # Show a plot of the generated distribution
       mainPanel(
-        plotOutput("boxPlot")
+        plotOutput("violinPlot")
       )
     )
   )
