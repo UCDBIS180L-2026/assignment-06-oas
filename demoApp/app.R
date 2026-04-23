@@ -28,9 +28,9 @@ ui <- fluidPage( #create the overall page
       sidebarPanel(
         radioButtons("species", #the input variable that the value will go into
                      "Choose a species to display traits:",
-                     c("Setosa",
-                       "Versicolor",
-                       "Virginica")
+                     c("setosa",
+                       "versicolor",
+                       "virginica")
         )),
       
       # Show a plot of the generated distribution
@@ -53,13 +53,13 @@ server <- function(input, output) {
   
   output$violinPlot <- renderPlot({
     
-    plotTrait <- as.name(input$trait) # convert string to name
+    plotTrait <- as.name(input$species) # convert string to name
     
     # set up the plot
     pl <- ggplot(data = iris,
-                 aes(x=Species,
-                     y= !! plotTrait, # !! to use the column names contained in plotTrait
-                     fill=Species
+                 aes(x=!! species,
+                     y= trait,
+                     fill=species
                  )
     )
     
