@@ -3,7 +3,7 @@ library(tidyverse)
 # other libraries here
 
 # data loading and one-time processing here
-data.pheno <- read_csv("teamApp/RiceDiversity.44K.MSU6.Phenotypes.csv")
+data.pheno <- read_csv("RiceDiversity.44K.MSU6.Phenotypes.csv")
 
 # Define UI for application 
 ui <- fluidPage( #create the overall page
