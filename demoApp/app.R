@@ -53,7 +53,6 @@ server <- function(input, output) {
   
   # Reformat iris data into long format
   iris_longer <- iris %>% 
-    filter(Species = input$Species) %>% 
     pivot_longer(
       cols = -Species,
       names_to = "trait",
@@ -66,8 +65,8 @@ server <- function(input, output) {
     
     # set up the plot
     pl <- iris_longer %>% 
-      filter(Species %in% plotSpecies) %>% 
-      ggplot(aes(x=trait, #
+      filter(Species == as.name(input$Species)) %>% 
+      ggplot(aes(x=trait, 
                  y= value,
                  fill=trait
 
