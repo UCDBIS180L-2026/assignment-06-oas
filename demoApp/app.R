@@ -19,19 +19,18 @@ ui <- fluidPage( #create the overall page
     titlePanel("Iris Data"),
     
     # Some helpful information
-    helpText("This application creates a violin plot to show difference between",
-             "iris species.  Please use the radio box below to choose a trait",
+    helpText("This application creates a violin plot to show the traits of",
+             "one iris species.  Please use the radio box below to choose a species",
              "for plotting"),
     
     # Sidebar with a radio box to input which trait will be plotted
     sidebarLayout(
       sidebarPanel(
-        radioButtons("trait", #the input variable that the value will go into
-                     "Choose a trait to display:",
-                     c("Sepal.Length",
-                       "Sepal.Width",
-                       "Petal.Length",
-                       "Petal.Width")
+        radioButtons("Species", #the input variable that the value will go into
+                     "Choose a species to display traits:",
+                     c("Setosa",
+                       "vVrsicolor",
+                       "Virginica")
         )),
       
       # Show a plot of the generated distribution
