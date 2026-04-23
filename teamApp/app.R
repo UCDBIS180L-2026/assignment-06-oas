@@ -38,7 +38,7 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("histogram")  # also fixed extra space
+      plotOutput("plot")  # also fixed extra space
     )
   )
 )
@@ -58,16 +58,18 @@ server <- function(input, output) {
                  names_prefix = 'Flowering time at ',
                  values_to = 'FT')
   
-  output$plot <- renderPlot(
+  output$plot <- renderPlot({
     
     #setup plot
     pl <- data.pheno.FT %>% 
-      filter(location == as.name(input$location) %>% 
+      filter(location == as.name(input$location)) %>% 
       ggplot(aes(x= `Seed length`, 
-                 y= FT)) + geom_point() + 
-        geom_smooth()
-      )
-  )
+                 y= FT)) 
+      
+    #draw plot
+    pl + geom_point() + 
+      geom_smooth()
+  })
   
 }
 # Run the application 
