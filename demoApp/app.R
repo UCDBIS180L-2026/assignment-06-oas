@@ -19,19 +19,18 @@ ui <- fluidPage( #create the overall page
     titlePanel("Iris Data"),
     
     # Some helpful information
-    helpText("This application creates a violin plot to show difference between",
-             "iris species.  Please use the radio box below to choose a trait",
+    helpText("This application creates a violin plot to show the traits of",
+             "one iris species.  Please use the radio box below to choose a species",
              "for plotting"),
     
     # Sidebar with a radio box to input which trait will be plotted
     sidebarLayout(
       sidebarPanel(
-        radioButtons("trait", #the input variable that the value will go into
-                     "Choose a trait to display:",
-                     c("Sepal.Length",
-                       "Sepal.Width",
-                       "Petal.Length",
-                       "Petal.Width")
+        radioButtons("species", #the input variable that the value will go into
+                     "Choose a species to display traits:",
+                     c("setosa",
+                       "versicolor",
+                       "virginica")
         )),
       
       # Show a plot of the generated distribution
@@ -54,13 +53,23 @@ server <- function(input, output) {
   
   output$violinPlot <- renderPlot({
     
-    plotTrait <- as.name(input$species) # convert string to name
+    plotSpecies <- as.name(input$species) # convert string to name
+    
+    # Reformat iris data into long format
+    iris_longer <- iris %>% 
+      filter(Species = input$Species) %>% 
+      pivot_longer(
+        cols = -Species,
+        names_to = "trait",
+        values_to = "value"
+      )
     
     # set up the plot
-    pl <- ggplot(data = iris,
-                 aes(x=c(Sepal.length, Sepal.Width, Petal.Length, Petal.Width),
-                     y= !! plotSpecies, # !! to use the column names contained in plotSpecies
-                     fill=Species
+    pl <- ggplot(data = iris_longer,
+                 aes(x=!! plotSpecies, # !! to use the column names contained in plotSpecies
+                     y= trait,
+                     fill=trait
+
                  )
     )
     
