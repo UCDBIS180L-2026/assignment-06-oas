@@ -59,11 +59,13 @@ server <- function(input, output) {
                  values_to = 'FT')
   
   output$plot <- renderPlot(
+    # get seed length
+    plotseedlength <- input$seedlength
     
     #setup plot
     pl <- data.pheno.FT %>% 
       filter(location == as.name(input$location) %>% 
-      ggplot(aes(x= `Seed length`, 
+      ggplot(aes(x= plotseedlength, 
                  y= FT)) + geom_point() + 
         geom_smooth()
       )
