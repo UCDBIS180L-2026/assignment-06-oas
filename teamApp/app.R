@@ -17,7 +17,7 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      radioButtons(
+      radioButtons( # Arden: Radio button to allow user to select location where flowering time was recorded
         "location",
         "Choose which location from which flowering time was recorded:",
         choices = c(
@@ -27,11 +27,11 @@ ui <- fluidPage(
         )
       ),
       
-      sliderInput(
+      sliderInput( # Arden: Slider to allow user to set range of seed length
         "seedlength",
         "Set length of seed:",
-        min = min(data.pheno$`Seed length`, na.rm = TRUE),
-        max = max(data.pheno$`Seed length`, na.rm = TRUE),
+        min = round(min(data.pheno$`Seed length`, na.rm = TRUE), 2),
+        max = round(max(data.pheno$`Seed length`, na.rm = TRUE), 2),
         value = c(
           min(data.pheno$`Seed length`, na.rm = TRUE),
           max(data.pheno$`Seed length`, na.rm = TRUE)
