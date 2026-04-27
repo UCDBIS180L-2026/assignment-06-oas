@@ -63,7 +63,7 @@ server <- function(input, output) {
   
   output$plot <- renderPlot({
     
-    #setup plot
+    #Shefali: setup graph to plot flowering time for a range of seed lengths
     pl <- data.pheno.FT %>%
       filter(
         location == input$location,
@@ -72,7 +72,7 @@ server <- function(input, output) {
       ) %>% 
       ggplot(aes(x = `Seed length`, y = FT))
       
-      #draw plot
+      #Shefali: draw graph with points plotted and smooth trend line
       pl + geom_point() + 
         geom_smooth(method = "lm", se = FALSE) +
         labs(x = 'Seed Length', y = 'Flowering Time') +
