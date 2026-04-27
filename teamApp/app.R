@@ -1,6 +1,6 @@
+# libraries for application
 library(shiny)
 library(tidyverse)
-# other libraries here
 
 # data loading and one-time processing here
 data.pheno <- read_csv("RiceDiversity.44K.MSU6.Phenotypes.csv")
@@ -55,11 +55,11 @@ server <- function(input, output) {
            'Flowering time at Arkansas',
            'Flowering time at Faridpur',
            'Flowering time at Aberdeen',
-           'Seed length') %>% 
+           'Seed length') %>% # Select only the columns needed for the plot: OP
     pivot_longer(cols = c(-'Region',-'Seed length'),
                  names_to = 'location',
                  names_prefix = 'Flowering time at ',
-                 values_to = 'FT')
+                 values_to = 'FT') # Split locations from FT to a new column for the plot using the name prefix
   
   output$plot <- renderPlot({
     
